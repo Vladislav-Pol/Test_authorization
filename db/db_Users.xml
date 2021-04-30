@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <login>User12</login>
+        <password>401c3157c42bdf2106edd8247c270a34</password>
+        <salt>90f91646bcd56edc9ebb6ea110f71ced</salt>
+        <email>mail@wmail.mail</email>
+        <name>Пользователь</name>
+    </user>
+</users>

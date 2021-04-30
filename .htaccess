@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteBase /
+
+# разрешен доступ к файлам в папках css и  js, остальные запросы перенаправляем на корневой индекс и передаем запрашиваемый адрес в параметр q
+RewriteCond %{REQUEST_URI} !^/(index.php)?(\?.*)?$
+RewriteCond %{REQUEST_URI} !^/css/.*
+RewriteCond %{REQUEST_URI} !^/js/.*
+RewriteRule ^(.*)$ ?q=$1
