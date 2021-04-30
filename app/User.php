@@ -16,6 +16,9 @@ class User
     protected $pregName = '/[a-z0-9а-я]{2,}/i';
     protected $authLifeTime = 60 * 60 * 24 * 30;
 
+    /** метод регистрирует нового пользователя
+     * @param array $data принимает массив данных для регистрации
+     */
     public function addNewUser($data)
     {
         $this->login = $data['login'];
@@ -45,6 +48,9 @@ class User
         die;
     }
 
+    /** метотд авторизации пользователя
+     * @param array $data принимает массив с данными для авторизации
+     */
     public function login($data)
     {
         $result = ['login_error' => "Неверный логин или пароль"];
@@ -54,7 +60,7 @@ class User
 
             foreach ($arUsers as $user) {
                 if ($user->login == $data['login'] &&
-                    $user->password == $this->getPasswordHash($data['password'], $user->salt)) {
+                    $user->password == $this->getPasswordHash($data['password'], (string)$user->salt)) {
 
                     $sessionId = session_id();
                     if($data['remember'] === on) {
@@ -77,6 +83,9 @@ class User
         die;
     }
 
+    /**
+     * метод для разавторизации пользователя
+     */
     public function logout()
     {
         $arUsers = DbUsers::getUsers();
@@ -97,7 +106,9 @@ class User
         return md5($salt . md5($password));
     }
 
-    //возвращает true если все поля соответстуют условиям валидации, иначе false и довавляет поле с ошибкой в массив
+    /**возвращает true если все поля соответстуют условиям валидации, иначе false и добавляет поле с ошибкой в массив dateErrors
+     * @return bool
+     */
     protected function validateRegData()
     {
         $result = true;
@@ -126,6 +137,9 @@ class User
         return $result;
     }
 
+    /**метод проверяет еникальность логина и почты пользователя
+     * @return bool
+     */
     protected function isUniqueUser()
     {
         $result = true;
@@ -144,6 +158,9 @@ class User
         return $result;
     }
 
+    /** метод проверяет авторизацию в сессии, а затем к куках
+     * @return bool
+     */
     public static function checkAuth()
     {
         $result = false;
@@ -157,8 +174,10 @@ class User
             foreach ($arUsers as $user) {
                 if ($user->cookie == $_COOKIE['key']) {
                     $_SESSION['auth'] = true;
+                    $_SESSION['user_name'] = (string)$user->name;
                     $user->sessionId = session_id();
                     DbUsers::updateUsers($arUsers);
+                    break;
                 }
             }
         }

@@ -1,3 +1,4 @@
+//обработка нажатия кнопи=ки "войти"
 $('#btn_login').click(function () {
     $('.error').remove();
     $.ajax({
@@ -17,6 +18,7 @@ $('#btn_login').click(function () {
     })
 })
 
+//обработка нажатия кнопи=ки "зарегистрироваться"
 $('#btn_registration').click(function () {
     $('.error').remove();
     $.ajax({

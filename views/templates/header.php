@@ -14,15 +14,15 @@
     <p>Здравствуйте, <?=$_SESSION['user_name']?>!</p>
     <?endif;?>
     <ul>
-        <a href="/"><li>Главная</li></a>
+        <li><a href="/">Главная</a></li>
 
         <? if(!$_SESSION['auth']):?>
-            <a href="/authorization"><li>Войти</li></a>
-            <a href="/registration"><li>Зарегистрироваться</li></a>
+            <li><a href="/authorization">Войти</a></li>
+            <li><a href="/registration">Зарегистрироваться</a></li>
         <?endif;?>
 
         <? if($_SESSION['auth']):?>
-        <a href="/authorization/logout"><li>Выйти</li></a>
+            <li><a href="/authorization/logout">Выйти</a></li>
         <?endif;?>
     </ul>
 </div>

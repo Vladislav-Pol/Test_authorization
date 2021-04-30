@@ -7,4 +7,21 @@
         <email>mail@wmail.mail</email>
         <name>Пользователь</name>
     </user>
+    <user>
+        <login>User01</login>
+        <password>f6d3b64fe790660992cc5a955891702e</password>
+        <salt>da6e4f10e4af662eaef61718e83b7d42</salt>
+        <email>mail@mail.mail</email>
+        <name>Пользователь</name>
+        
+    </user>
+    <user>
+        <login>User012</login>
+        <password>6c66be429ba3d5d4b7ebeed72f8f3571</password>
+        <salt>bae7b49d7b3d98a62fb97122daba371b</salt>
+        <email>mail@m2ail.mail</email>
+        <name>Пользователь</name>
+        
+        
+    </user>
 </users>
